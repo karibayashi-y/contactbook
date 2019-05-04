@@ -35,9 +35,10 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function usercreate(Request $request)
     {
-        $this->middleware('guest');
+        //validation
+        
     }
 
     /**

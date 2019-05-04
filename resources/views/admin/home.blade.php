@@ -9,7 +9,7 @@
                     <h4>利用者一覧</h4>
                     
                             <div class="float-right">
-                                    <a href="{{route('index.createform')}}"><button type="button" class="btn btn-primary">
+                                    <a href="{{route('admin.usercreateform')}}"><button type="button" class="btn btn-primary">
                                 {{ __('利用者新規登録') }}
                                 </button></a>
                             </div>
