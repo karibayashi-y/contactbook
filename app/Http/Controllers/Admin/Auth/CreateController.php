@@ -21,7 +21,6 @@ class CreateController extends Controller
         $createform->notice = $request->notice;
         $createform->save();
         
-
         return view('home',[
             'event' => $createform->event,
             'image_url' => str_replace('public/', 'storage/', $createform->image_url),

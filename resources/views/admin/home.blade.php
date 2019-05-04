@@ -5,7 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Admin Dashboard</div>
+                <div class="card-header">
+                    <h4>利用者一覧</h4>
+                    
+                            <div class="float-right">
+                                    <a href="{{route('index.createform')}}"><button type="button" class="btn btn-primary">
+                                {{ __('利用者新規登録') }}
+                                </button></a>
+                            </div>
+                            
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -18,11 +27,10 @@
                     <table class="table">
                             <thead>
                               <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">ID</th>
                               <th scope="col">氏名</th>
                                 <th scope="col">連絡帳一覧画面</th>
                                 <th scope="col">連絡帳新規作成</th>
-                                <th scope="col">連絡帳編集</th>
                                 <th scope="col">データ削除</th>
                               </tr>
                             </thead>
@@ -32,9 +40,8 @@
                                     <th scope="row">{{$user->id}}</th>
                                         <td>{{$user->name}}</td>
                                         <td>route</td>
-                                        <td>作成ボタン</td>
-                                        <td>編集ボタン</td>
-                                        <td>削除ボタン</td>
+                                        <td><button type="button" class="btn btn-primary"><a class="text-white" href="{{route('index.createform')}}">作成</a></button></td>
+                                        <td><button type="button" class="btn btn-danger">削除</button></td>
                                     </tr>
                                 @endforeach
                             </tbody>
