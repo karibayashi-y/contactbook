@@ -13,8 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    
+                        <p>本日の行事：{{ $event }}</p>
+                        <p>画像：<img src ="/{{ $image_url }}"></p>
+                        <p>連絡事項：{{ $notice }}</p>
+                    
                 </div>
             </div>
         </div>
