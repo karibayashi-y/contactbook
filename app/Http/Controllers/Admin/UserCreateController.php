@@ -11,7 +11,10 @@ use Illuminate\Http\Request;
 
 class UserCreateController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
 
     public function index()
     {
