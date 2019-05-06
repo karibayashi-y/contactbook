@@ -59,6 +59,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:admins'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'workspeace' => ['required', 'string', 'max:255', 'unique:admins'],
         ]);
     }
 
@@ -66,7 +67,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Admin
      */
     protected function create(array $data)
     {
@@ -74,6 +75,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'workspeace' => $data['workspeace'],
         ]);
     }
 

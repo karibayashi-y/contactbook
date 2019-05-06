@@ -10,7 +10,19 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.register') }}">
                         @csrf
-
+                        <div class="form-group row">
+                                <label for="workspeace" class="col-md-4 col-form-label text-md-right">{{ __('Workspeace') }}</label>
+    
+                                <div class="col-md-6">
+                                    <input id="workspeace" type="text" class="form-control{{ $errors->has('workspeace') ? ' is-invalid' : '' }}" name="workspeace" value="{{ old('workspeace') }}" required autofocus>
+    
+                                    @if ($errors->has('workspeace'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('workspeace') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 

@@ -34,6 +34,7 @@ class UserCreateController extends Controller
           'name' => $request->input('name'),
           'email' => $request->input('email'),
           'password' => bcrypt($request->input('password')),
+          'workspeace' => $request->input('workspeace'),
         ]);
         $user->save();
        

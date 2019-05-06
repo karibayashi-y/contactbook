@@ -22,13 +22,10 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    
-
-                    <table class="table">
+                        <table class="table">
                             <thead>
                               <tr>
-                                <th scope="col">ID</th>
-                              <th scope="col">氏名</th>
+                                <th scope="col">氏名</th>
                                 <th scope="col">連絡帳一覧画面</th>
                                 <th scope="col">連絡帳新規作成</th>
                                 <th scope="col">データ削除</th>
@@ -36,16 +33,18 @@
                             </thead>
                             <tbody>
                                 @foreach ($users as $user)
-                                <tr>
-                                    <th scope="row">{{$user->id}}</th>
-                                        <td>{{$user->name}}</td>
-                                        <td>route</td>
-                                        <td><button type="button" class="btn btn-primary"><a class="text-white" href="{{route('index.createform')}}">作成</a></button></td>
-                                        <td><button type="button" class="btn btn-danger">削除</button></td>
-                                    </tr>
+                                    <tr>
+                                        @if($user->workspeace != Auth::user()->workspeace)
+                                            @continue
+                                        @endif
+                                            <th scope="row">{{ $user->name }}</th>
+                                            <td>route</td>
+                                            <td><button type="button" class="btn btn-primary"><a class="text-white" href="{{route('index.createform')}}">作成</a></button></td>
+                                            <td><button type="button" class="btn btn-danger">削除</button></td>
+                                        </tr>
                                 @endforeach
                             </tbody>
-                          </table>
+                        </table>
                 </div>
             </div>
         </div>

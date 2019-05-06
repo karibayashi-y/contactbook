@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Admin;
 
 class HomeController extends Controller
 {
@@ -27,4 +28,5 @@ class HomeController extends Controller
         $users = User::get();
         return view('admin.home',compact('users'));
     }
+
 }

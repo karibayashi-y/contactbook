@@ -12,6 +12,13 @@
                         @csrf
 
                         <div class="form-group row">
+                            <label for="workspeace" class="col-md-4 col-form-label text-md-right">{{ __('Workspeace') }}</label>
+                                <div class="col-md-6">
+                                    <input id="workspeace" type="text" class="form-control" name="workspeace" value="{{ Auth::user()->workspeace }}" readonly>
+                                </div>
+                        </div>
+                        
+                        <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
