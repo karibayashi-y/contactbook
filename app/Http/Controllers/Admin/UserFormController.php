@@ -23,11 +23,15 @@ class UserFormController extends Controller
         $endid = end($tmp);
         $userName = urldecode($endid);
 
-
-        
         return view('admin/createform/user',[
             'users' => $users,
             'userName' => $userName,
         ],compact('creates'));
+    }
+
+    public function delete(Request $request)
+    {
+        Createform::find($request->id)->delete();
+        return back();
     }
 }

@@ -17,12 +17,12 @@
                 @if ($userName == $item->user_name)
                     
                 
-        
             <div class="card border-secondary mb-3">
             <div class="card-header">{{ date('Y年n月j日', strtotime($item->updated_at)) }}</div>
-                
-            <a href="">削除</a>
-            
+            <form method="post" action="{{$item->id}}">
+                @csrf
+            <input type="submit" value="削除" class="btn btn-danger btn-sm" onclick='return confirm("本当に削除しますか？");'>
+</form>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
