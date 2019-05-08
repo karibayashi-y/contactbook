@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Createform;
-
+use App\User;
 
 class CreateController extends Controller
 {
@@ -15,15 +15,19 @@ class CreateController extends Controller
     }
 
 
-    public function index()
+    public function showCreateForm()
     {
-        return view('admin.createform.index');
+        $users = User::all();
+        return view('admin.createform.index',[
+            'users' => $users,
+        ]);
     }
 
-    public function createForm(Request $request)
+    public function create(Request $request)
     {
 
         $createform = new Createform();
+        $createform->user_name =$request->user_name;
         $createform->event = $request->event;
         $image = $request->image_url->storeAs('public/createform_images', date('YmdHis').'_'. '.jpg');
         $image_place = str_replace('public/', 'storage/', $image);
@@ -31,13 +35,10 @@ class CreateController extends Controller
         $createform->notice = $request->notice;
         $createform->save();
 
-        $creates = Createform::latest()->get();
-
-        return view('home'
-        ,compact('creates'));
-
-
+        return redirect('admin/forms/{user}');
     }
+
+
 
 
 

@@ -11,6 +11,19 @@
                     <form method="POST" action="{{ route('index.createform') }}" enctype="multipart/form-data">
                         @csrf
 
+                        <div class="form-group">
+                            <label for="exampleSelect1exampleFormControlSelect1">ユーザー名</label>
+                                <select class="form-control" id="exampleFormControlSelect1" name="user_name">
+                                    <option>ユーザー名を選択してください</option>
+                                        @foreach ($users as $user)
+                                            @if(Auth::user()->workspeace == $user->workspeace)
+                                            <option>{{ $user->name}}</option>
+                                            @endif
+                                        @endforeach
+                                </select>
+                        </div>
+
+
                         <div class="form-group row">
                             <label for="event" class="col-md-4 col-form-label text-md-right">{{ __('本日の行事') }}</label>
                             <textarea id="event" type="text" class="form-control{{ $errors->has('event') ? ' is-invalid' : '' }}" name="event" value="{{ old('event') }}" required autofocus></textarea>

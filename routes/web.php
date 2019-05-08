@@ -27,17 +27,25 @@ Route::group(['prefix' => 'admin'], function(){
 //register
     Route::get('register', 'Admin\Auth\RegisterController@showRegisterForm')->name('admin.register');
     Route::post('register', 'Admin\Auth\RegisterController@register')->name('admin.register');
-//contentcreate
-
-    Route::get('create/', 'Admin\CreateController@index')->name('index.createform');
-    Route::post('create/', 'Admin\CreateController@createForm')->name('admin.createform');
-
 //usercreate
     Route::get('usercreate','Admin\UserCreateController@index')->name('admin.usercreateform');
     Route::post('usercreate','Admin\UserCreateController@usercreate')->name('admin.usercreateform');
 
+
+//contentcreate
+    Route::get('forms/create', 'Admin\CreateController@showCreateForm')->name('index.createform');
+    Route::post('forms/create', 'Admin\CreateController@create');
+
+//userform
+    Route::get('forms/{id}', 'Admin\UserFormController@showUserForm')->name('index.userform');
+    Route::post('forms/{id}', 'Admin\UserFormController@form');
+    
+
+
+
+
 //userhome:admin
-    Route::get('{$users->id}/home','Admin\UserhomeController@userhome')->name('admin.userhome');
+    
 
 });
 

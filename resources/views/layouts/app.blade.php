@@ -66,6 +66,7 @@
                                     </form>
                                 </div>
                             </li>
+                            <div>{{ Auth::user()->workspeace }}</div>
                         @endguest
                     </ul>
                 </div>

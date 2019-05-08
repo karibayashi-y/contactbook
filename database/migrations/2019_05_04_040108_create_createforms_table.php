@@ -15,6 +15,7 @@ class CreateCreateformsTable extends Migration
     {
         Schema::create('createforms', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('user_name');
             $table->text('event');
             $table->string('image_url')->nullable();
             $table->text('notice');
