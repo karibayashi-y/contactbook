@@ -47,9 +47,17 @@ class UserFormController extends Controller
     {
         $createform = Createform::findOrFail($form_id);
         $createform->event = $request->event;
-        $image = $request->image_url->storeAs('public/createform_images', date('YmdHis').'_'. '.jpg');
-        $image_place = str_replace('public/', 'storage/', $image);
-        $createform->image_url = $image_place;
+        if(($createform->image_url = $request->image_url)!=null)
+            {
+                $image = $request->image_url->storeAs('public/createform_images', date('YmdHis').'_'. '.jpg');
+                $image_place = str_replace('public/', 'storage/', $image);
+                $createform->image_url = $image_place;
+            }
+            else{
+                $already = Createform::findOrFail($form_id);
+                $createform->image_url = $already->image_url;
+            }
+        
         $createform->notice = $request->notice;
         $createform->save();
 

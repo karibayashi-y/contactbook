@@ -28,11 +28,16 @@
                         </div>
                         
                         <div class="form-image_url">
-                            <label for="image_url" class="col-md-4 col-form-label text-md-right">{{ __('現在の写真') }}</label>
-                            @if($createform->image_url = null)
                             
+                            @if($createform->image_url)
+                            <label for="image_url" class="col-md-4 col-form-label text-md-right">{{ __('現在の写真') }}</label>
                             <img src ="/{{ $createform->image_url}}">
+                           @endif
                             <input type="file" name="image_url">
+                            
+                        
+
+                            
                         </div>
 
                         <div class="form-group row">
@@ -50,7 +55,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('編集する') }}
+                                    {{ __('再送信') }}
                                 </button>
                             </div>
                         </div>

@@ -29,9 +29,12 @@ class CreateController extends Controller
         $createform = new Createform();
         $createform->user_name = $request->user_name;
         $createform->event = $request->event;
-        $image = $request->image_url->storeAs('public/createform_images', date('YmdHis').'_'. '.jpg');
-        $image_place = str_replace('public/', 'storage/', $image);
-        $createform->image_url = $image_place;
+        if(($createform->image_url = $request->image_url)!=null)
+            {
+                $image = $request->image_url->storeAs('public/createform_images', date('YmdHis').'_'. '.jpg');
+                $image_place = str_replace('public/', 'storage/', $image);
+                $createform->image_url = $image_place;
+            }
         $createform->notice = $request->notice;
         $createform->save();
 
