@@ -21,13 +21,13 @@ class UserFormController extends Controller
         $url = url()->full();
         $tmp = explode("/", $url);
         $endid = end($tmp);
-        $username = urldecode($endid);
+        $userName = urldecode($endid);
 
 
         
         return view('admin/createform/user',[
             'users' => $users,
-            'username' => $username,
+            'userName' => $userName,
         ],compact('creates'));
     }
 }

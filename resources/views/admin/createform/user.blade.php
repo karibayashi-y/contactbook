@@ -14,7 +14,7 @@
     
                
                 @foreach ($creates as $item )
-                @if ($username == $item->user_name)
+                @if ($userName == $item->user_name)
                     
                 
         

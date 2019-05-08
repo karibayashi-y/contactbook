@@ -30,7 +30,6 @@
                             <thead>
                               <tr>
                                 <th scope="col">氏名</th>
-                                <th scope="col">user_id</th>
                                 <th scope="col">連絡帳一覧画面</th>
                                 <th scope="col">データ削除</th>
                               </tr>
@@ -43,8 +42,11 @@
                                             @continue
                                         @endif
                                             <th scope="row">{{ $user->name }}</th>
-                                    <th scope="row">{{ $user->id }}</th>
-                                    <td><button type="button" class="btn btn-info"><a class="text-white" href="{{ route('index.userform', ['id' => $user->name]) }}">個別ページ</a></button></td>
+                                    <td>
+                                        <button type="button" class="btn btn-info">
+                                            <a class="text-white" href="{{ route('index.userform', ['id' => $user->name]) }}">個別ページ</a>
+                                        </button>
+                                    </td>
                                             
                                             <td><button type="button" class="btn btn-danger">削除</button></td>
                                         </tr>

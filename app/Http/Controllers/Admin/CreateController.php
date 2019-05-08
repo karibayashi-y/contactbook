@@ -27,7 +27,7 @@ class CreateController extends Controller
     {
 
         $createform = new Createform();
-        $createform->user_name =$request->user_name;
+        $createform->user_name = $request->user_name;
         $createform->event = $request->event;
         $image = $request->image_url->storeAs('public/createform_images', date('YmdHis').'_'. '.jpg');
         $image_place = str_replace('public/', 'storage/', $image);
@@ -35,11 +35,11 @@ class CreateController extends Controller
         $createform->notice = $request->notice;
         $createform->save();
 
-        return redirect('admin/forms/{user}');
+        return redirect()->to(route('index.userform', [
+            'id' => $createform->user_name
+            ]));
+
+        
     }
-
-
-
-
 
 }
