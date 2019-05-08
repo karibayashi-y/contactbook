@@ -34,4 +34,27 @@ class UserFormController extends Controller
         Createform::find($request->id)->delete();
         return back();
     }
+
+    public function editForm($form_id)
+    {
+        $createform = Createform::findOrFail($form_id);
+        return view('admin/editform/index',[
+            'createform' => $createform,
+        ]);
+    }
+
+    public function update($form_id, Request $request)
+    {
+        $createform = Createform::findOrFail($form_id);
+        $createform->event = $request->event;
+        $image = $request->image_url->storeAs('public/createform_images', date('YmdHis').'_'. '.jpg');
+        $image_place = str_replace('public/', 'storage/', $image);
+        $createform->image_url = $image_place;
+        $createform->notice = $request->notice;
+        $createform->save();
+
+        return redirect()->to(route('index.userform', [
+            'id' => $createform->user_name
+            ]));
+    }
 }

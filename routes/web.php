@@ -39,6 +39,9 @@ Route::group(['prefix' => 'admin'], function(){
 //userform
     Route::get('forms/{id}', 'Admin\UserFormController@showUserForm')->name('index.userform');
     Route::post('forms/{id}', 'Admin\UserFormController@delete');
+    Route::get('forms/{form_id}/edit', 'Admin\UserFormController@editForm')->name('edit.userform');
+    Route::put('forms/{form_id}/edit', 'Admin\UserFormController@update');
+
     
 
 

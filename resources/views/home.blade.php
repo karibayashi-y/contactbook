@@ -15,7 +15,9 @@
                         </div>
                     @endif
                     <p>本日の行事：{{ $item->event }}</p>
+                    @if($item->image_url)
                     <p>画像：<img src ="/{{ $item->image_url}}"></p>
+                    @endif
                     <p>連絡事項：{{ $item->notice }}</p>
                 </div>
             </div>
