@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Createform;
 use App\User;
+use App\CreateForm;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\CreateForms;
 
 class CreateController extends Controller
 {
@@ -25,9 +27,11 @@ class CreateController extends Controller
 
     public function create(Request $request)
     {
+        //$user = User::all();
 
         $createform = new Createform();
         $createform->user_name = $request->user_name;
+        $createform->user_id = DB::table('users')->where('name','=',$createform->user_name)->value('id');
         $createform->event = $request->event;
         if(($createform->image_url = $request->image_url)!=null)
             {

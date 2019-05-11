@@ -9,11 +9,8 @@
                     <h4>利用者一覧</h4>
                     
                             <div class="float-right">
-                                    <a href="{{route('admin.usercreateform')}}"><button type="button" class="btn btn-primary">
-                                {{ __('利用者新規登録') }}
-                                </button></a>
+                                    <input type="button" onclick="location.href='{{route('admin.usercreateform')}}'"value="利用者新規登録" class="btn btn-primary">
                             </div>
-                            
                 </div>
                 
                 <div class="card-body">
@@ -25,7 +22,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <button type="button" class="btn btn-success mb-4 float-right"><a class="text-white" href="{{route('index.createform')}}">{{ __('連絡帳作成') }}</a></button>
+                    <input type="button" onclick="location.href='{{route('index.createform')}}'"value="連絡帳作成" class="btn btn-success mb-4 float-right">
                         <table class="table">
                             <thead>
                               <tr>
@@ -37,6 +34,7 @@
                             <tbody>
                                     
                                 @foreach ($users as $user)
+                                
                                     <tr>
                                         @if($user->workspeace != Auth::user()->workspeace)
                                             @continue
@@ -47,10 +45,24 @@
                                             <a class="text-white" href="{{ route('index.userform', ['id' => $user->name]) }}">個別ページ</a>
                                         </button>
                                     </td>
+                                    {{-- <form method="post" action="{{route('deleteform',['id' => $user->id])}}">
+                                            @csrf --}}
+                                    <td>
+                                        {{-- <button　class="btn"><a href="{{ route('deleteform', ['id' => $user->id]) }}">削除</a></button> --}}
+                                        <button type="button" class="btn btn-danger">
+                                                <a class="text-white" href="{{route('deleteform',['id' => $user->id])}}">削除</a>
+                                            </button>
+                                        
+                                        {{-- <input type="submit" value="削除" class="btn btn-danger btn-sm" onclick='return confirm("本当に削除しますか？");'> --}}
+                                    
+                                    </td>
+              
                                             
-                                            <td><button type="button" class="btn btn-danger">削除</button></td>
+                                </form>
                                         </tr>
+                                    
                                 @endforeach
+                                
                             </tbody>
                         </table>
                         

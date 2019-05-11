@@ -20,6 +20,8 @@ Auth::routes();
 Route::group(['prefix' => 'admin'], function(){
 //home
     Route::get('home', 'Admin\HomeController@index')->name('admin.home');
+    Route::get('home/{id}', 'Admin\HomeController@deleteform')->name('deleteform');
+    Route::post('home/{id}', 'Admin\HomeController@delete');
 //login logout
     Route::get('login', 'Admin\Auth\LoginController@showLoginForm')->name('admin.login');
     Route::post('login', 'Admin\Auth\LoginController@login')->name('admin.login');

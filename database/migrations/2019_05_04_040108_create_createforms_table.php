@@ -15,11 +15,15 @@ class CreateCreateformsTable extends Migration
     {
         Schema::create('createforms', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->string('user_name');
             $table->text('event');
             $table->string('image_url')->nullable();
             $table->text('notice');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+
         });
     }
 

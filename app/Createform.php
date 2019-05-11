@@ -9,5 +9,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Createform extends Model
 {
-
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

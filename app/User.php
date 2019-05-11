@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -17,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id','name', 'email', 'password', 'workspeace',
+        'name', 'email', 'password', 'workspeace',
     ];
 
     /**
@@ -38,5 +39,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
+    public function createform()
+    {
+        return $this->hasOne('App\Createform');
+    }
 }

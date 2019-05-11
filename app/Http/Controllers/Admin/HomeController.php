@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Admin;
+use App\Createform;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -29,4 +30,36 @@ class HomeController extends Controller
         return view('admin.home',compact('users'));
     }
 
+    public function deleteform()
+    {   
+        $users = User::all();
+        $creates = Createform::all();
+
+        $url = url()->full();
+        $tmp = explode("/", $url);
+        $userId = end($tmp);
+
+        return view('admin/deleteform/index',[
+            'userId' => $userId,
+            'creates' => $creates,
+        ],compact('users'));
+
+        }
+
+        
+
+
+
+
+
+    public function delete(Request $request)
+    {
+        //Createform::find($request->name)->delete();
+       
+        DB::table('createforms')->where('user_id','=',$request->id)->delete();
+        User::find($request->id)->delete();
+
+        $users = User::get();
+        return redirect()->route('admin.home',compact('users'));
+    }
 }
