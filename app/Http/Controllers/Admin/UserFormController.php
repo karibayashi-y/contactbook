@@ -16,16 +16,15 @@ class UserFormController extends Controller
     public function showUserForm()
     {
         $users = User::all();
-        $creates = Createform::latest()->get();
+        $creates = Createform::latest()->paginate(5);
 
         $url = url()->full();
         $tmp = explode("/", $url);
-        $endid = end($tmp);
-        $userName = urldecode($endid);
+        $userId = end($tmp);
 
         return view('admin/createform/user',[
             'users' => $users,
-            'userName' => $userName,
+            'userId' => $userId,
         ],compact('creates'));
     }
 
@@ -49,20 +48,19 @@ class UserFormController extends Controller
         $createform->event = $request->event;
         if(($createform->image_url = $request->image_url)!=null)
             {
-                $image = $request->image_url->storeAs('public/createform_images', date('YmdHis').'_'. '.jpg');
-                $image_place = str_replace('public/', 'storage/', $image);
-                $createform->image_url = $image_place;
+                $image = $request->image_url->storeAs('public/createform_images', date('YmdHis').'_'.$createform->user_id.'.jpg');
+                $image_replace = str_replace('public/', 'storage/', $image);
+                $createform->image_url = $image_replace;
             }
             else{
                 $already = Createform::findOrFail($form_id);
                 $createform->image_url = $already->image_url;
             }
-        
         $createform->notice = $request->notice;
         $createform->save();
 
-        return redirect()->to(route('index.userform', [
-            'id' => $createform->user_name
-            ]));
+        return redirect()->route('index.userform', [
+            'id' => $createform->user_id
+            ]);
     }
 }

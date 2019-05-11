@@ -7,6 +7,7 @@ use App\User;
 use App\Createform;
 use Illuminate\Support\Facades\DB;
 
+
 class HomeController extends Controller
 {
     /**
@@ -26,7 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = User::get();
+        $users = User::paginate(5);
         return view('admin.home',compact('users'));
     }
 
@@ -54,12 +55,9 @@ class HomeController extends Controller
 
     public function delete(Request $request)
     {
-        //Createform::find($request->name)->delete();
-       
         DB::table('createforms')->where('user_id','=',$request->id)->delete();
         User::find($request->id)->delete();
 
-        $users = User::get();
-        return redirect()->route('admin.home',compact('users'));
+        return redirect()->route('admin.home');
     }
 }

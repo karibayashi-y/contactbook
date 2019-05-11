@@ -35,16 +35,16 @@ class CreateController extends Controller
         $createform->event = $request->event;
         if(($createform->image_url = $request->image_url)!=null)
             {
-                $image = $request->image_url->storeAs('public/createform_images', date('YmdHis').'_'. '.jpg');
+                $image = $request->image_url->storeAs('public/createform_images', date('YmdHis').'_'.$createform->user_id.'.jpg');
                 $image_place = str_replace('public/', 'storage/', $image);
                 $createform->image_url = $image_place;
             }
         $createform->notice = $request->notice;
         $createform->save();
 
-        return redirect()->to(route('index.userform', [
-            'id' => $createform->user_name
-            ]));
+        return redirect()->route('index.userform', [
+            'id' => $createform->user_id
+            ]);
 
         
     }

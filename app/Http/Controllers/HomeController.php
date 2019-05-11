@@ -25,7 +25,8 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {   $creates = Createform::latest()->get();
+    {   $creates = Createform::latest()->paginate(5);
+
         return view('home',compact('creates'));
     }
 }

@@ -8,8 +8,10 @@
                 <div class="card-header">{{ __('Createform') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('index.createform') }}" enctype="multipart/form-data">
+                        @foreach ($users as $user)
+                    <form method="POST" action="{{ route('index.createform',['id'=> $user->id]) }}" enctype="multipart/form-data">
                         @csrf
+                        @endforeach
 
                         <div class="form-group">
                             <label for="exampleSelect1exampleFormControlSelect1">ユーザー名</label>

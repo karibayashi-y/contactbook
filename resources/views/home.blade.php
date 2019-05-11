@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <div class="infinite-scroll">
                 @foreach ($creates as $item)
                 @if($item->user_name == Auth::user()->name)
             <div class="card border-secondary mb-3">
@@ -23,6 +24,9 @@
             </div>
             @endif
             @endforeach
+            {{ $creates->links('') }}
+            
+        </div>
         </div>
     </div>
 </div>

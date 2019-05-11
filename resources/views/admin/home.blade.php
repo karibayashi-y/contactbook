@@ -6,10 +6,10 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h4>利用者一覧</h4>
+                    <h4>ユーザー一覧</h4>
                     
                             <div class="float-right">
-                                    <input type="button" onclick="location.href='{{route('admin.usercreateform')}}'"value="利用者新規登録" class="btn btn-primary">
+                                    <input type="button" onclick="location.href='{{route('admin.usercreateform')}}'"value="ユーザー新規登録" class="btn btn-primary">
                             </div>
                 </div>
                 
@@ -17,11 +17,6 @@
 
                     
 
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
                     <input type="button" onclick="location.href='{{route('index.createform')}}'"value="連絡帳作成" class="btn btn-success mb-4 float-right">
                         <table class="table">
                             <thead>
@@ -42,7 +37,7 @@
                                             <th scope="row">{{ $user->name }}</th>
                                     <td>
                                         <button type="button" class="btn btn-info">
-                                            <a class="text-white" href="{{ route('index.userform', ['id' => $user->name]) }}">個別ページ</a>
+                                            <a class="text-white" href="{{ route('index.userform', ['id' => $user->id]) }}">個別ページ</a>
                                         </button>
                                     </td>
                                     {{-- <form method="post" action="{{route('deleteform',['id' => $user->id])}}">
@@ -70,5 +65,6 @@
             </div>
         </div>
     </div>
+    {{ $users->links('pagination.default') }}
 </div>
 @endsection
