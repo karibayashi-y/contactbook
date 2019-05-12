@@ -11,7 +11,6 @@
                             <div class="flex-right">
                                     <input type="button" onclick="location.href='{{route('admin.usercreateform')}}'"value="ユーザー新規登録" class="btn btn-primary">
                             </div>
-                            
                 </div>
                 <div class="card-body">
                     <input type="button" onclick="location.href='{{route('index.createform')}}'"value="連絡帳作成" class="btn btn-success mb-4 float-right">
@@ -32,7 +31,6 @@
                                         @endif
                                         <th scope="row" class="text-center ">{{ $user->name }}</th>
                                         <td>
-                                        
                                             <div class="text-center">
                                                 <input type="button" onclick="location.href='{{route('index.userform', ['id' => $user->id])}}'" value="個別ページ" class="btn btn-info text-white">
                                             </div>
@@ -51,8 +49,5 @@
             {{ $users->links('pagination.default') }}
         </div>
     </div>
-    
-    
-    
 </div>
 @endsection
