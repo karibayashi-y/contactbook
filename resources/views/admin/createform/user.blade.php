@@ -27,8 +27,8 @@
                         <h5 class="far fa-clock font-weight-bold m-3 d-none d-sm-block">&thinsp;スケジュール</h5>
                         <h6 class="far fa-clock font-weight-bold m-1 d-block d-sm-none">&thinsp;スケジュール</h6>
                         <div cols="50" rows="10">{!! nl2br(e($item->event)) !!}</div>
-                        <h5 class="fas fa-broadcast-tower font-weight-bold m-3 d-none d-sm-block">&thinsp;連絡事項</h5>
-                        <h6 class="fas fa-broadcast-tower font-weight-bold m-1 d-block d-sm-none">&thinsp;連絡事項</h6>
+                        <h5 class="fas fa-broadcast-tower font-weight-bold mx-3 mt-5 mb-3 d-none d-sm-block">&thinsp;連絡事項</h5>
+                        <h6 class="fas fa-broadcast-tower font-weight-bold mx-1 mt-3 mb-1 d-block d-sm-none">&thinsp;連絡事項</h6>
                         <div cols="50" rows="10">{!! nl2br(e($item->notice)) !!}</div>
                 </div>
             </div>

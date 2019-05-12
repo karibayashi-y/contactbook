@@ -5,9 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">
-                    <h4>ユーザー一覧</h4>
-                            <div class="float-right">
+                <div class="card-header d-flex justify-content-between">
+                    <h4 class="d-none d-sm-block">ユーザー一覧</h4>
+                    <h6 class="d-block d-sm-none">ユーザー一覧</h6>
+                            <div class="flex-right">
                                     <input type="button" onclick="location.href='{{route('admin.usercreateform')}}'"value="ユーザー新規登録" class="btn btn-primary">
                             </div>
                             
