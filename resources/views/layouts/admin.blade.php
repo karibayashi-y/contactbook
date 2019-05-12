@@ -48,11 +48,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('admin.login') }}">{{ __('ログイン') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('admin.register') }}">{{ __('新規作成（管理者）') }}</a>
                                 </li>
                             @endif
                         @else
@@ -63,7 +63,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item">ログイン名:{{ Auth::user()->name }}</a>
+                                    <a class="dropdown-item">ログイン名:{{ Auth::user()->name }}</a>
+                                    <a class="dropdown-item" href="{{ route('admin.admincreateform') }}">管理者追加</a>
                                     <a class="dropdown-item" href="{{ route('admin.logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

@@ -30,13 +30,4 @@ class CreateForms extends FormRequest
             'notice' =>'required',
         ];
     }
-    public function attributes()
-    {
-        return [
-            'user_name' => 'ユーザー名',
-            'event' => 'スケジュール',
-            'image_url' => '画像',
-            'notice' => '連絡事項',
-        ];
-    }   
 }

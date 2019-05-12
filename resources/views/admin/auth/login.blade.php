@@ -5,29 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">{{ __('ログイン(管理者)') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.login') }}">
                         @csrf
                         <div class="form-group row">
-                                <label for="workspeace" class="col-md-4 col-form-label text-md-right">{{ __('Workspeace') }}</label>
-    
-                                <div class="col-md-6">
-                                    <input id="workspeace" type="text" class="form-control{{ $errors->has('workspeace') ? ' is-invalid' : '' }}" name="workspeace" value="{{ old('workspeace') }}" required autofocus>
-    
-                                    @if ($errors->has('workspeace'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('workspeace') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('メールアドレス') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}">
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
@@ -38,10 +25,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('パスワード') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password">
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
@@ -57,7 +44,7 @@
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                        {{ __('次回から入力を省略') }}
                                     </label>
                                 </div>
                             </div>
@@ -66,12 +53,12 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                                    {{ __('ログイン') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                        {{ __('パスワードを忘れましたか？') }}
                                     </a>
                                 @endif
                             </div>

@@ -33,6 +33,10 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('usercreate','Admin\UserCreateController@index')->name('admin.usercreateform');
     Route::post('usercreate','Admin\UserCreateController@usercreate')->name('admin.usercreateform');
 
+//admincreate
+    Route::get('admincreate','Admin\AdminCreateController@index')->name('admin.admincreateform');
+    Route::post('admincreate','Admin\AdminCreateController@admincreate')->name('admin.admincreateform');
+
 
 //contentcreate
     Route::get('forms/create', 'Admin\CreateController@showCreateForm')->name('index.createform');

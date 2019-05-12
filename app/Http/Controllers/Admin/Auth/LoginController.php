@@ -38,6 +38,7 @@ class LoginController extends Controller
         $this->middleware('guest:admin')->except('logout');
     }
 
+
     public function showLoginForm()
     {
         return view('admin.auth.login');
@@ -52,7 +53,7 @@ class LoginController extends Controller
     {
         $this->guard('admin')->logout();
        // $request->session()->invalidate(); これが全部のSessionを消してしまう
-        return redirect('/');
+        return redirect('admin/home');
     }
 
 }

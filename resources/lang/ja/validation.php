@@ -144,6 +144,16 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => '名前',
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
+        'password_confirmation' => '確認用パスワード',
+        'workspeace' => 'ワークスペース',
+        'user_name' => 'ユーザー名',
+        'event' => 'スケジュール',
+        'image_url' => '画像',
+        'notice' => '連絡事項',
+    ],
 
 ];
