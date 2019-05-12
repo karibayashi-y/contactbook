@@ -24,7 +24,7 @@
             </div>
             @endif
             @endforeach
-            {{ $creates->links('') }}
+            {{ $creates->links() }}
             
         </div>
         </div>

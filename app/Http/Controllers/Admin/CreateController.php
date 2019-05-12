@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\CreateForm;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CreateForms;
+
+
 
 class CreateController extends Controller
 {
@@ -25,9 +26,8 @@ class CreateController extends Controller
         ]);
     }
 
-    public function create(Request $request)
+    public function create(CreateForms $request)
     {
-        //$user = User::all();
 
         $createform = new Createform();
         $createform->user_name = $request->user_name;
@@ -45,8 +45,6 @@ class CreateController extends Controller
         return redirect()->route('index.userform', [
             'id' => $createform->user_id
             ]);
-
-        
     }
 
 }

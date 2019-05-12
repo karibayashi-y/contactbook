@@ -24,7 +24,19 @@ class CreateForms extends FormRequest
     public function rules()
     {
         return [
-            //
+            'user_name' => 'required',
+            'event' => 'required',
+            'image_url' => 'image|mimes:jpeg,png,jpg,gif|max:10000',
+            'notice' =>'required',
         ];
     }
+    public function attributes()
+    {
+        return [
+            'user_name' => 'ユーザー名',
+            'event' => 'スケジュール',
+            'image_url' => '画像',
+            'notice' => '連絡事項',
+        ];
+    }   
 }

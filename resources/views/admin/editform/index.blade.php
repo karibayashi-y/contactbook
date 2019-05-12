@@ -31,9 +31,9 @@
                             
                             @if($createform->image_url)
                             <label for="image_url" class="col-md-4 col-form-label text-md-right">{{ __('現在の写真') }}</label>
-                            <img src ="/{{ $createform->image_url}}">
+                            <img src ="/{{ $createform->image_url}}" class="rounded mx-auto d-block img-fluid">
                            @endif
-                            <input type="file" name="image_url">
+                            <input type="file" name="image_url" class="mt-2">
                             
                         
 
