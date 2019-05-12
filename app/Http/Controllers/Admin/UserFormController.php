@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\User;
 use App\Createform;
+use Illuminate\Support\Facades\DB;
 
 class UserFormController extends Controller
 {
@@ -16,15 +17,20 @@ class UserFormController extends Controller
     public function showUserForm()
     {
         $users = User::all();
-        $creates = Createform::latest()->paginate(5);
+        
 
         $url = url()->full();
+        $url = preg_replace( '/\?.+$/', '', $url );
         $tmp = explode("/", $url);
         $userId = end($tmp);
+
+        $creates = Createform::latest()->where('user_id','=',$userId)->paginate(5);
+        $page =DB::table('createforms')->where('user_id','=',$userId)->value('user_id');
 
         return view('admin/createform/user',[
             'users' => $users,
             'userId' => $userId,
+            'page' => $page,
         ],compact('creates'));
     }
 

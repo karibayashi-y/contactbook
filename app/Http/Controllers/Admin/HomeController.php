@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Createform;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class HomeController extends Controller
@@ -26,9 +27,14 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        $users = User::paginate(5);
-        return view('admin.home',compact('users'));
+    {   
+        $workspeace = Auth::user()->workspeace;
+        $users = User::where('workspeace','=',$workspeace)->paginate(5);
+
+
+        return view('admin.home',[
+            'workspeace'=> $workspeace,
+        ],compact('users'));
     }
 
     public function deleteform()

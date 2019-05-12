@@ -4,10 +4,11 @@
 
 <div class="container">
     <div class="row justify-content-center">
+        
         <div class="col-md-8">
+               
                 @foreach ($creates as $item )
                 @if ($userId == $item->user_id)
-                
             <div class="card border-secondary mb-4">
                 <div class="card-header d-flex  justify-content-between">
                     <h4 class="mt-2">{{ date('Y年n月j日', strtotime($item->updated_at)) }}</h4>
@@ -23,18 +24,26 @@
                         @if ($item->image_url)
                         <img src ="/{{ $item->image_url}}" class="rounded mx-auto d-block img-fluid">
                         @endif
-                        <h6 class="far fa-clock font-weight-bold m-2">スケジュール</h6>
-                        <pre>{{ $item->event }}</pre>
-                        <h6 class="fas fa-broadcast-tower font-weight-bold m-2">連絡事項</h6>
-                        <pre>{{ $item->notice }}</pre>
+                        <h5 class="far fa-clock font-weight-bold m-3">&thinsp;スケジュール</h5>
+                        <div cols="50" rows="10">{!! nl2br(e($item->event)) !!}</div>
+                        <h5 class="fas fa-broadcast-tower font-weight-bold m-3">&thinsp;連絡事項</h5>
+                        <div cols="50" rows="10">{!! nl2br(e($item->notice)) !!}</div>
                 </div>
             </div>
             @endif
             @endforeach
+            
+           
         </div>
+
+            
+         
     </div>
+    @if($page)
     {{ $creates->links('pagination.default') }}
+    @endif
 </div>
+
 @endsection
 
 
