@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Createform;
+use App\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class HomeController extends Controller
 {
@@ -22,7 +27,13 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('home');
+    {   
+        $userId = Auth::user()->id;
+        $creates = Createform::where('user_id','=',$userId)->paginate(5);
+
+        return view('home',[
+            'userId' => $userId,
+        ],compact('creates'));
     }
 }
+

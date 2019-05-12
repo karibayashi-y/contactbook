@@ -1,16 +1,24 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="infinite-scroll">
+        <h3 class="font-weight-bold">連絡帳（{{$users}}）</h3>
                 @foreach ($creates as $item )
+                @if ($userId == $item->user_id)
             <div class="card border-secondary mb-4">
                 <div class="card-header d-flex  justify-content-between">
                     <h4 class="mt-2 d-none d-sm-block">{{ date('Y年n月j日', strtotime($item->updated_at)) }}</h4>
                     <h6 class="mt-2 d-block d-sm-none">{{ date('Y年n月j日', strtotime($item->updated_at)) }}</h6>
+                    <div class="d-flex m-2">
+                        <input type="submit" onclick="location.href='{{route('edit.userform', ['form' => $item->id])}}'"value="編集" class="btn btn-sm btn-primary mr-3">
+                        <form method="post" action="{{$item->id}}">
+                            @csrf
+                                <input type="submit" value="削除" class="btn btn-danger btn-sm" onclick='return confirm("本当に削除しますか？");'>
+                        </form>
+                    </div>
                 </div>
                 <div class="card-body">
                         @if ($item->image_url)
@@ -24,30 +32,15 @@
                         <div cols="50" rows="10">{!! nl2br(e($item->notice)) !!}</div>
                 </div>
             </div>
-                @endforeach
-                {{ $creates->links() }}
-            </div>
+            @endif
+            @endforeach
+            @if($page)
+                {{ $creates->links('pagination.default') }}
+            @endif
         </div>
     </div>
 </div>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
-<script type="text/javascript">
-    $(function () {
-        $('ul.pagination').hide();
-            $('.infinite-scroll').jscroll({
-                autoTrigger: true,
-                loadingHtml: '<div>読み込み中...</div>',
-                padding: 0,
-                nextSelector: '.pagination li.active + li a',
-                contentSelector: 'div.infinite-scroll',
-                callback: function() {
-                    $('ul.pagination').remove();
-                }
-            });
-        });
-        </script>
-@endsection
 
+@endsection
 
 
