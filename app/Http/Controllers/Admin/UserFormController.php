@@ -16,13 +16,12 @@ class UserFormController extends Controller
 
     public function showUserForm()
     {
-        $users = User::all();
-        
-
         $url = url()->full();
         $url = preg_replace( '/\?.+$/', '', $url );
         $tmp = explode("/", $url);
         $userId = end($tmp);
+
+        $users = DB::table('users')->where('id','=',$userId)->value('name');
 
         $creates = Createform::latest()->where('user_id','=',$userId)->paginate(5);
         $page =DB::table('createforms')->where('user_id','=',$userId)->value('user_id');

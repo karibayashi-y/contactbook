@@ -47,10 +47,11 @@
                         </table>
                 </div>
             </div>
+            {{ $users->links('pagination.default') }}
         </div>
     </div>
     
-    {{ $users->links('pagination.default') }}
+    
     
 </div>
 @endsection

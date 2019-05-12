@@ -27,7 +27,7 @@
                         <div class="form-group row m-2">
                             <label for="exampleSelect1exampleFormControlSelect1" class="font-weight-bold">{{ __('ユーザー名') }}</label>
                                 <select class="custom-select" id="exampleFormControlSelect1" name="user_name">
-                                    <option disabled selected>ユーザー名を選択してください</option>
+                                    <option disabled selected>選択してください</option>
                                         @foreach ($users as $user)
                                             @if(Auth::user()->workspeace == $user->workspeace)
                                             <option>{{ $user->name}}</option>
@@ -44,7 +44,8 @@
 
                         <div class="form-image_url  row m-2 flex-column ">
                             <label for="image_url" class="font-weight-bold">{{ __('写真') }}</label>
-                            <input type="file" name="image_url" class="float-left col-xs-small">
+                            <input type="file" name="image_url" class="float-left d-none d-sm-block">
+                            <input type="file" name="image_url" class="float-left small d-block d-sm-none">
                             
                         </div>
                         <div class="form-group row m-2">
