@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\UserCreateForms;
 
 
 
@@ -21,15 +21,8 @@ class UserCreateController extends Controller
         return view('admin.usercreateform');
     }
 
-    public function usercreate(Request $request){
-        // バリデーション
-        $this->validate($request,[
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
-        ]);
+    public function usercreate(UserCreateForms $request){
         
-        // DB
         $user = new User([
           'name' => $request->input('name'),
           'email' => $request->input('email'),

@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {   
         $workspeace = Auth::user()->workspeace;
-        $users = User::where('workspeace','=',$workspeace)->paginate(5);
+        $users = User::where('workspeace','=',$workspeace)->paginate(10);
 
 
         return view('admin.home',[
