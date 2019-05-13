@@ -9,5 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Createform extends Model
 {
-    
+    protected $fillable = [
+        'user_id', 'user_name',
+    ];
 }

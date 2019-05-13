@@ -32,11 +32,11 @@
             <div class="container">
                     @guest
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'ContactBook') }}
                     </a>
                 @else
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'ContactBook') }}
                 </a>
                 @endguest
                 @guest
