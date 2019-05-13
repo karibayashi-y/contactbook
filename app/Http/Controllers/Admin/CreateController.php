@@ -29,7 +29,8 @@ class CreateController extends Controller
     public function create(CreateForms $request)
     {
 
-        $createform = new Createform();
+        $createform = Createform::all();
+
         $createform->user_name = $request->user_name;
         $createform->user_id = DB::table('users')->where('name','=',$createform->user_name)->value('id');
         $createform->event = $request->event;
@@ -41,7 +42,7 @@ class CreateController extends Controller
             }
         $createform->notice = $request->notice;
         $createform->save();
-        $creates = Createform::all();
+        
 
         return redirect()->route('index.userform', [
             'id' => $createform->user_id,
