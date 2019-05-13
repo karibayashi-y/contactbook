@@ -41,11 +41,11 @@ class CreateController extends Controller
             }
         $createform->notice = $request->notice;
         $createform->save();
-        $id = $createform->user_id;
+        $creates = Createform::all();
 
         return redirect()->route('index.userform', [
-            'id' => $id,
-            ]);
+            'id' => $createform->user_id,
+        ],compact('creates'));
     }
 
 }
