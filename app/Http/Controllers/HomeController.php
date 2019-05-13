@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {   
         $userId = Auth::user()->id;
-        $creates = Createform::where('user_id','=',$userId)->paginate(5);
+        $creates = Createform::latest()->where('user_id','=',$userId)->paginate(5);
 
         return view('home',[
             'userId' => $userId,

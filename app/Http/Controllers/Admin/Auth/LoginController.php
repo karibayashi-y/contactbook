@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
+
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Admin;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -41,7 +46,13 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('admin.auth.login');
+        $email = 'tanaka@tanaka.com';
+        $pass = 'tanaka';
+
+        return view('admin.auth.login',[
+            'email' => $email,
+            'pass' =>$pass,
+        ]);
     }
 
     protected function guard()
@@ -52,8 +63,10 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $this->guard('admin')->logout();
-       // $request->session()->invalidate(); これが全部のSessionを消してしまう
-        return redirect('admin/home');
+        $request->session()->flush();
+        $request->session()->regenerate();
+
+        return redirect('/admin/login');
     }
 
 }

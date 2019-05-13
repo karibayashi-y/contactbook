@@ -8,92 +8,71 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                
+                color: #383838;
                 font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
+                font-weight: 400;
+                margin:0;
             }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
             .content {
                 text-align: center;
             }
 
             .title {
                 font-size: 84px;
+                
+            }
+            .lead{
+                font-size:20px;
+                
+            }
+            .small_text{
+                font-size:12px;
             }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
+            
+            h1{
+                margin:0;
             }
-
-            .m-b-md {
-                margin-bottom: 30px;
+            .j{
+                background-image: url("../../welcome_imgs/1469.png");
+                background-color: aquamarine;
+                background-size: cover;
+                background-position: center 100%;
+                height:100vh;
+                }
+            .center{
+                text-align: center;
             }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+            <div class="j">
+                    <div class="container center pt-4">
+                      <h1 class="text-center font-weight-bold pt-3">ContactBook</h1>
+                      <p class="lead mt-5">管理者サイドに特化した連絡帳アプリです。</p>
+                      <p class="lead">簡単なボタン操作で複数人の管理が可能です。</p>
+                      <p class="lead">介護施設や幼稚園、習い事など様々なシーンに対応しています。</p>
+                      <div class="links mb-3">
+                            @guest('admin')
+                            <input type="button" onclick="location.href='{{ route('admin.home') }}'" value="管理者で利用する" class="btn btn-info m-1">
+                            @else
+                            <input type="button" onclick="location.href='{{ route('admin.login') }}'" value="管理者で利用する" class="btn btn-info m-1">
+                            @endguest
+                            @guest('user')
+                            <input type="button" onclick="location.href='{{ route('home') }}'" value="ユーザーで利用する" class="btn btn-warning text-light m-1">
+                            @else
+                            <input type="button" onclick="location.href='{{ route('login') }}'" value="ユーザーで利用する" class="btn btn-warning　text-light m-1">
+                            @endguest
+                    </div>
+                    <p class="small_text">※デイサービスでの使用例を想定したサンプルをご用意しています。ぜひ上記のボタンからお試しください。</p>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
+                    </div><!-- /.container -->
+                  </div><!-- /.jumbotron -->
+                  
     </body>
 </html>

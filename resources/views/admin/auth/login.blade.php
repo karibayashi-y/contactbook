@@ -10,6 +10,11 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.login') }}">
                         @csrf
+                        <div class="mb-3">
+                        <small>※初めてご利用の方は右上の新規作成画面へお進みください。<br>
+                        ※お試しログインをチェックするとサンプルをご覧いただけます。</small>
+                        </div>
+
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('メールアドレス') }}</label>
 
@@ -35,32 +40,20 @@
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('次回から入力を省略') }}
-                                    </label>
+                                <div class="trial mt-3">
+                                        <ul>
+                                            <li class="list-unstyled "><label><input type="checkbox" id="all" />お試しログイン</label></li>
+                                            <li class="d-none"><input id="email" type="checkbox" class="form-control" name="email" value='{{$email}}'></li>
+                                            <li class="d-none"><input id="password" type="checkbox" class="form-control" name="password" value='{{$pass}}'></li>
+                                        </ul>
                                 </div>
                             </div>
                         </div>
-
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('ログイン') }}
                                 </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('パスワードを忘れましたか？') }}
-                                    </a>
-                                @endif
                             </div>
                         </div>
                     </form>
@@ -69,4 +62,16 @@
         </div>
     </div>
 </div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
+<script type="text/javascript">
+$(function () {
+$('#all').on('change', function() {
+    $('input[name=email]').prop('checked', this.checked);
+    $('input[name=password]').prop('checked', this.checked);
+});
+});
+</script>
 @endsection
+
+
