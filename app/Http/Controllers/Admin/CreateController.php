@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\User;
-use App\CreateForm;
+use App\Createform;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CreateForms;
 
