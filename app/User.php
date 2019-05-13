@@ -9,6 +9,7 @@ use App\Notifications\TextPasswordReset;
 
 
 
+
 class User extends Authenticatable
 {
     use Notifiable;

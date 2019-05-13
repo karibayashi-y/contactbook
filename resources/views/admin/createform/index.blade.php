@@ -18,7 +18,6 @@
                             <label for="exampleSelect1exampleFormControlSelect1" class="font-weight-bold">{{ __('ユーザー名') }}</label>
                                 <select class="custom-select{{ $errors->has('user_name') ? ' is-invalid' : '' }}" id="exampleFormControlSelect1" name="user_name" autofocus>
    
-                                    
                                     <option disabled selected>選択してください</option>
                                         @foreach ($users as $user)
                                             @if(Auth::user()->workspeace == $user->workspeace)
@@ -31,7 +30,7 @@
                                         </span>
                                 @endif
                                 </select>
-                                
+
                         </div>
                         <div class="form-group row m-2">
                             <label for="event" class="font-weight-bold">{{ __('本日の行事') }}</label>
@@ -45,8 +44,7 @@
 
                         <div class="form-image_url  row m-2 flex-column ">
                             <label for="image_url" class="font-weight-bold">{{ __('写真') }}</label>
-                            <input type="file" name="image_url" class="float-left d-none d-sm-block">
-                            <input type="file" name="image_url" class="float-left small d-block d-sm-none">
+                            <input type="file" name="image_url" class="float-left small">
                         </div>
                         <div class="form-group row m-2">
                                 <label for="notice" class="font-weight-bold">{{ __('連絡事項') }}</label>

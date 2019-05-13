@@ -34,10 +34,9 @@
                 position: relative;
             }
 
-            .top-right {
+            .top-center {
                 position: absolute;
-                right: 10px;
-                top: 18px;
+                top: 5px;
             }
 
             .content {
@@ -55,45 +54,48 @@
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
-                text-transform: uppercase;
+                /* text-transform: uppercase; */
             }
 
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .jumbotron {
+                /* background-image: url("xxx.jpg"); */
+                background-color: aquamarine;
+                background-size: cover;
+                background-position: center 100%;
+                }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+            <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                      <h1 class="display-4 text-center">ContactBook</h1>
+                      <p class="lead">様々なシーンでお使いいただける、管理者サイドの連絡帳アプリです。</p>
+                      <p>お試しはこちらから</p>
+                      <p>※デーサービスでの使用例</p>
+                      <a href="">管理者ログイン（お試し）</a>
+                        <a href="">ユーザーログイン（お試し）</a>
+                    </div><!-- /.container -->
+                  </div><!-- /.jumbotron -->
+                  <div class="container">
+                        <div class="flex-center position-ref full-height">
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
+                                    <div class="top-center links">
+                                            @guest('admin')
+                                            <a href="{{ route('admin.home') }}" rel="noopener" target="_blank" >adminLogin</a>
+                                            @else
+                                            <a href="{{ route('admin.login') }}" rel="noopener" target="_blank" >adminLogin</a>
+                                            @endguest
+                                            @guest('user')
+                                            <a href="{{ route('home') }}" rel="noopener" target="_blank" >userLogin</a>
+                                            @else
+                                            <a href="{{ route('login') }}" rel="noopener" target="_blank" >userLogin</a>
+                                            @endguest
+                                    </div>
+                            </div>
+                  </div><!-- /.container -->
     </body>
 </html>

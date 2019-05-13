@@ -30,9 +30,15 @@
             
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
+                    @guest
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        {{ config('app.name', 'Laravel') }}
+                    </a>
+                @else
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+                @endguest
                 @guest
                 @else
                 <h5 class="m-2">{{ Auth::user()->workspeace }}</h5>
@@ -50,7 +56,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @guest
+                        @guest('user')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
                             </li>
