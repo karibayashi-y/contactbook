@@ -41,9 +41,10 @@ class CreateController extends Controller
             }
         $createform->notice = $request->notice;
         $createform->save();
+        $id = $createform->user_id;
 
         return redirect()->route('index.userform', [
-            'id' => $createform->user_id,
+            'id' => $id,
             ]);
     }
 
