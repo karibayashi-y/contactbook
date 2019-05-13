@@ -8,95 +8,71 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                
+                color: #383838;
                 font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
+                font-weight: 400;
+                margin:0;
             }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-center {
-                position: absolute;
-                top: 5px;
-            }
-
             .content {
                 text-align: center;
             }
 
             .title {
                 font-size: 84px;
+                
+            }
+            .lead{
+                font-size:20px;
+                
+            }
+            .small_text{
+                font-size:12px;
             }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                /* text-transform: uppercase; */
+            
+            h1{
+                margin:0;
             }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-
-            .jumbotron {
-                /* background-image: url("xxx.jpg"); */
+            .j{
+                background-image: url("../../welcome_imgs/1469.png");
                 background-color: aquamarine;
                 background-size: cover;
                 background-position: center 100%;
+                height:100vh;
                 }
+            .center{
+                text-align: center;
+            }
         </style>
     </head>
     <body>
-            <div class="jumbotron jumbotron-fluid">
-                    <div class="container">
-                      <h1 class="display-4 text-center">ContactBook</h1>
-                      <p class="lead">様々なシーンでお使いいただける、管理者サイドの連絡帳アプリです。</p>
-                      <p>複数人の管理が可能です。</p>
-                      <p>お試しはこちらから</p>
-                      <p>※デーサービスでの使用例</p>
-                      <a href="">管理者ログイン（お試し）</a>
-                        <a href="">ユーザーログイン（お試し）</a>
+            <div class="j">
+                    <div class="container center pt-4">
+                      <h1 class="text-center font-weight-bold pt-3">ContactBook</h1>
+                      <p class="lead mt-5">管理者サイドに特化した連絡帳アプリです。</p>
+                      <p class="lead">簡単なボタン操作で複数人の管理が可能です。</p>
+                      <p class="lead">介護施設や幼稚園、習い事など様々なシーンに対応しています。</p>
+                      <div class="links mb-3">
+                            @guest('admin')
+                            <input type="button" onclick="location.href='{{ route('admin.home') }}'" value="管理者で利用する" class="btn btn-info m-1">
+                            @else
+                            <input type="button" onclick="location.href='{{ route('admin.login') }}'" value="管理者で利用する" class="btn btn-info m-1">
+                            @endguest
+                            @guest('user')
+                            <input type="button" onclick="location.href='{{ route('home') }}'" value="ユーザーで利用する" class="btn btn-warning text-light m-1">
+                            @else
+                            <input type="button" onclick="location.href='{{ route('login') }}'" value="ユーザーで利用する" class="btn btn-warning　text-light m-1">
+                            @endguest
+                    </div>
+                    <p class="small_text">※デイサービスでの使用例を想定したサンプルをご用意しています。ぜひ上記のボタンからお試しください。</p>
+
                     </div><!-- /.container -->
                   </div><!-- /.jumbotron -->
-                  <div class="container">
-                        <div class="flex-center position-ref full-height">
-
-                                    <div class="top-center links">
-                                            @guest('admin')
-                                            <a href="{{ route('admin.home') }}" rel="noopener" target="_blank" >管理者</a>
-                                            @else
-                                            <a href="{{ route('admin.login') }}" rel="noopener" target="_blank" >管理者</a>
-                                            @endguest
-                                            @guest('user')
-                                            <a href="{{ route('home') }}" rel="noopener" target="_blank" >ユーザー</a>
-                                            @else
-                                            <a href="{{ route('login') }}" rel="noopener" target="_blank" >ユーザー</a>
-                                            @endguest
-                                    </div>
-                            </div>
-                  </div><!-- /.container -->
+                  
     </body>
 </html>
