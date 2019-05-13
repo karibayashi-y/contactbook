@@ -43,7 +43,7 @@ class CreateController extends Controller
         $createform->save();
 
         return redirect()->route('index.userform', [
-            'id' => $createform->user_id
+            'id' => $createform->user_id,
             ]);
     }
 
