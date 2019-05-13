@@ -33,9 +33,9 @@ class UserFormController extends Controller
         ],compact('creates'));
     }
 
-    public function delete(Request $request)
+    public function delete($form_id)
     {
-        Createform::find($request->id)->delete();
+        Createform::findOrFail($form_id)->delete();
         return back();
     }
 
@@ -65,7 +65,7 @@ class UserFormController extends Controller
         $createform->save();
 
         return redirect()->route('index.userform', [
-            'id' => $createform->user_id
+            'form_id' => $createform->user_id
             ]);
     }
 }

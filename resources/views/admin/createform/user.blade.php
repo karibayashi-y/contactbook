@@ -14,7 +14,7 @@
                     <h6 class="mt-2 d-block d-sm-none">{{ date('Y年n月j日', strtotime($item->updated_at)) }}</h6>
                     <div class="d-flex m-2">
                         <input type="submit" onclick="location.href='{{route('edit.userform', ['form_id' => $item->id])}}'"value="編集" class="btn btn-sm btn-primary mr-3">
-                        <form method="post" action="{{$item->id}}">
+                        <form method="post" action="{{route('edit.userform', ['form_id' => $item->id])}}">
                             @csrf
                                 <input type="submit" value="削除" class="btn btn-danger btn-sm" onclick='return confirm("本当に削除しますか？");'>
                         </form>

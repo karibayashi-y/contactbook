@@ -53,12 +53,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
 
 //contentcreate
     Route::get('forms/create', 'Admin\CreateController@showCreateForm')->name('index.createform');
-    Route::post('forms/create', 'Admin\CreateController@create');
+    Route::post('forms/create', 'Admin\CreateController@create')->name('index.createform');
 
 //userform
     Route::get('forms/{id}', 'Admin\UserFormController@showUserForm')->name('index.userform');
-    Route::post('forms/{id}', 'Admin\UserFormController@delete');
+    Route::post('forms/{id}', 'Admin\UserFormController@delete')->name('index.userform');
     Route::get('forms/{form_id}/edit', 'Admin\UserFormController@editForm')->name('edit.userform');
-    Route::put('forms/{form_id}/edit', 'Admin\UserFormController@update');
+    Route::put('forms/{form_id}/edit', 'Admin\UserFormController@update')->name('edit.userform');
 });
 

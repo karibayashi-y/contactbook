@@ -10,6 +10,7 @@ use App\Http\Requests\CreateForms;
 
 
 
+
 class CreateController extends Controller
 {
     public function __construct()
@@ -29,8 +30,7 @@ class CreateController extends Controller
     public function create(CreateForms $request)
     {
 
-        $createform = Createform::all();
-
+        $createform = new Createform();
         $createform->user_name = $request->user_name;
         $createform->user_id = DB::table('users')->where('name','=',$createform->user_name)->value('id');
         $createform->event = $request->event;
@@ -42,11 +42,9 @@ class CreateController extends Controller
             }
         $createform->notice = $request->notice;
         $createform->save();
-        
-
-        return redirect()->route('index.userform', [
+        return redirect()->route('index.userform',[
             'id' => $createform->user_id,
-        ],compact('creates'));
+            ]);
     }
 
 }
