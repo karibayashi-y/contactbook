@@ -39,8 +39,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::get('home', 'Admin\HomeController@index')->name('admin.home');
     Route::get('home/{id}', 'Admin\HomeController@deleteform')->name('deleteform');
     Route::post('home/{id}', 'Admin\HomeController@delete');
-    
-    
 
 //logout
     Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
@@ -62,6 +60,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::post('forms/{id}', 'Admin\UserFormController@delete');
     Route::get('forms/{form_id}/edit', 'Admin\UserFormController@editForm')->name('edit.userform');
     Route::put('forms/{form_id}/edit', 'Admin\UserFormController@update');
-
 });
 

@@ -10,7 +10,7 @@
 
                 <div class="card-body">
                         @foreach ($users as $user)
-                    <form method="POST" action="{{ route('index.createform',['id'=> $user->id]) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('index.createform') }}" enctype="multipart/form-data">
                         @csrf
                         @endforeach
 
