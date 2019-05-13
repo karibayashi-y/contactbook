@@ -7,6 +7,7 @@ use App\User;
 use App\Createform;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 
 class HomeController extends Controller
@@ -29,7 +30,7 @@ class HomeController extends Controller
     public function index()
     {   
         $workspeace = Auth::user()->workspeace;
-        $users = User::where('workspeace','=',$workspeace)->paginate(10);
+        $users = User::where('workspeace','=',$workspeace)->paginate(5);
 
 
         return view('admin.home',[
@@ -52,12 +53,6 @@ class HomeController extends Controller
         ],compact('users'));
 
         }
-
-        
-
-
-
-
 
     public function delete(Request $request)
     {

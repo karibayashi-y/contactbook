@@ -33,7 +33,7 @@
 
                         </div>
                         <div class="form-group row m-2">
-                            <label for="event" class="font-weight-bold">{{ __('本日の行事') }}</label>
+                            <label for="event" class="font-weight-bold">{{ __('スケジュール') }}</label>
                             <textarea id="event" type="text"  class="form-control{{ $errors->has('event') ? ' is-invalid' : '' }}"  name="event" cols="50" rows="10">{{ old('event') }}</textarea>
                             @if ($errors->has('event'))
                                     <span class="invalid-feedback" role="alert">

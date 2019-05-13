@@ -8,6 +8,9 @@
                 <div class="card-header">{{ __('ログイン') }}</div>
 
                 <div class="card-body">
+                        <div class="mb-3">
+                                <small>※お試しログインをチェックするとサンプルをご覧いただけます。</small>
+                        </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -36,21 +39,16 @@
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('次回から入力を省略する') }}
-                                    </label>
+                                <div class="trial mt-3">
+                                        <ul>
+                                            <li class="list-unstyled "><label><input type="checkbox" id="all" />お試しログイン</label></li>
+                                            <li class="d-none"><input id="email" type="checkbox" class="form-control" name="email" value='murata@murata.com'></li>
+                                            <li class="d-none"><input id="password" type="checkbox" class="form-control" name="password" value='murata'></li>
+                                        </ul>
                                 </div>
                             </div>
                         </div>
-
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -70,4 +68,14 @@
         </div>
     </div>
 </div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
+<script type="text/javascript">
+$(function () {
+$('#all').on('change', function() {
+    $('input[name=email]').prop('checked', this.checked);
+    $('input[name=password]').prop('checked', this.checked);
+});
+});
+</script>
 @endsection

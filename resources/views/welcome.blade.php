@@ -74,6 +74,7 @@
                     <div class="container">
                       <h1 class="display-4 text-center">ContactBook</h1>
                       <p class="lead">様々なシーンでお使いいただける、管理者サイドの連絡帳アプリです。</p>
+                      <p>複数人の管理が可能です。</p>
                       <p>お試しはこちらから</p>
                       <p>※デーサービスでの使用例</p>
                       <a href="">管理者ログイン（お試し）</a>
@@ -85,14 +86,14 @@
 
                                     <div class="top-center links">
                                             @guest('admin')
-                                            <a href="{{ route('admin.home') }}" rel="noopener" target="_blank" >adminLogin</a>
+                                            <a href="{{ route('admin.home') }}" rel="noopener" target="_blank" >管理者</a>
                                             @else
-                                            <a href="{{ route('admin.login') }}" rel="noopener" target="_blank" >adminLogin</a>
+                                            <a href="{{ route('admin.login') }}" rel="noopener" target="_blank" >管理者</a>
                                             @endguest
                                             @guest('user')
-                                            <a href="{{ route('home') }}" rel="noopener" target="_blank" >userLogin</a>
+                                            <a href="{{ route('home') }}" rel="noopener" target="_blank" >ユーザー</a>
                                             @else
-                                            <a href="{{ route('login') }}" rel="noopener" target="_blank" >userLogin</a>
+                                            <a href="{{ route('login') }}" rel="noopener" target="_blank" >ユーザー</a>
                                             @endguest
                                     </div>
                             </div>

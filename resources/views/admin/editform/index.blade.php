@@ -25,7 +25,7 @@
                                 <label for="image_url" class="font-weight-bold">{{ __('現在の写真') }}</label>
                                 <img src ="/{{ $createform->image_url}}" class="rounded mx-auto d-block img-fluid">
                                @endif
-                                <input type="file" name="image_url" class="float-left col-xs-small mt-2">
+                                <input type="file" name="image_url" class="float-left small mt-2">
                         </div>
                         <div class="form-group row m-2">
                                 <label for="event" class="font-weight-bold">{{ __('スケジュール') }}</label>
