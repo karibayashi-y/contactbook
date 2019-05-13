@@ -33,12 +33,12 @@ class UserFormController extends Controller
         ],compact('creates'));
     }
 
-    public function delete($form_id)
+    public function delete(Request $request)
     {
-        Createform::findOrFail($form_id)->delete();
+        Createform::find($request->id)->delete();
         return back();
     }
-
+    
     public function editForm($form_id)
     {
         $createform = Createform::findOrFail($form_id);
