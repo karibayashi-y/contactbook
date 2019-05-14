@@ -23,7 +23,7 @@
                         <div class="form-image_url row m-2 flex-column">
                                 @if($createform->image_url)
                                 <label for="image_url" class="font-weight-bold">{{ __('現在の写真') }}</label>
-                                <img src ="/{{ $createform->image_url}}" class="rounded mx-auto d-block img-fluid">
+                                <img src ="{{ url("https://s3-ap-northeast-1.amazonaws.com/project-contactbook/images/$createform->image_url") }}" class="rounded mx-auto d-block img-fluid">
                                @endif
                                 <input type="file" name="image_url" class="float-left small mt-2">
                         </div>

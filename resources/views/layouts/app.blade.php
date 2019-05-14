@@ -30,29 +30,22 @@
             
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                    @guest
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'ContactBook') }}
-                    </a>
+                @guest
+                    <a class="navbar-brand" href="{{ url('/') }}">ContactBook</a>
                 @else
-                <a class="navbar-brand" href="{{ url('/home') }}">
-                    {{ config('app.name', 'ContactBook') }}
-                </a>
+                    <a class="navbar-brand" href="{{ url('/home') }}">ContactBook</a>
                 @endguest
                 @guest
                 @else
-                <h5 class="m-2">{{ Auth::user()->workspeace }}</h5>
+                    <h5 class="m-2">{{ Auth::user()->workspeace }}</h5>
                 @endguest
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
+                    <ul class="navbar-nav mr-auto"></ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->

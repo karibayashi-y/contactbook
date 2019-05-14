@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Createform;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 
 class UserFormController extends Controller
 {
@@ -22,7 +24,6 @@ class UserFormController extends Controller
         $userId = end($tmp);
 
         $users = DB::table('users')->where('id','=',$userId)->value('name');
-
         $creates = Createform::latest()->where('user_id','=',$userId)->paginate(5);
         $page =DB::table('createforms')->where('user_id','=',$userId)->value('user_id');
 
@@ -53,9 +54,10 @@ class UserFormController extends Controller
         $createform->event = $request->event;
         if(($createform->image_url = $request->image_url)!=null)
             {
-                $image = $request->image_url->storeAs('public/createform_images', date('YmdHis').'_'.$createform->user_id.'.jpg');
-                $image_replace = str_replace('public/', 'storage/', $image);
-                $createform->image_url = $image_replace;
+                $file = $request->file('image_url');
+                $rename = (date('YmdHis').'_'.$createform->user_id.'.jpg');
+                $path = Storage::disk('s3')->putFileas('/images', $file, $rename, 'public');
+                $createform->image_url = $rename;
             }
             else{
                 $already = Createform::findOrFail($form_id);

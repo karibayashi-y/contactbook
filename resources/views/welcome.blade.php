@@ -39,7 +39,7 @@
                 margin:0;
             }
             .j{
-                background-image: url("../../welcome_imgs/1469.png");
+                background-image: url('https://s3-ap-northeast-1.amazonaws.com/project-contactbook/back-image/background.jpg');
                 background-color: aquamarine;
                 background-size: cover;
                 background-position: center 100%;
