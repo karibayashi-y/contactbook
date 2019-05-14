@@ -14,7 +14,7 @@
                 </div>
                 <div class="card-body">
                         @if ($item->image_url)
-                        <img src ="/{{ $item->image_url}}" class="rounded mx-auto d-block img-fluid m-3">
+                        <img src ="{{ url("https://s3-ap-northeast-1.amazonaws.com/project-contactbook/images/$item->image_url") }}" class="rounded mx-auto d-block img-fluid m-3">
                         @endif
                         <h5 class="far fa-clock font-weight-bold m-3 d-none d-sm-block">&thinsp;スケジュール</h5>
                         <h6 class="far fa-clock font-weight-bold m-1 d-block d-sm-none">&thinsp;スケジュール</h6>
